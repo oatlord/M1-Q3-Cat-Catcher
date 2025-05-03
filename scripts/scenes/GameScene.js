@@ -1,5 +1,11 @@
 let platforms;
 let cat, player, cursors;
+// let catHit;
+
+// function catHitHandler() {
+//     catHit = true;
+//     // alert("You hit the cat!");
+// }
 
 class GameScene extends Phaser.Scene {
     constructor() {
@@ -29,8 +35,13 @@ class GameScene extends Phaser.Scene {
 
         cursors = this.input.keyboard.createCursorKeys();
 
-        this.physics.add.collider(player, cat, catHitHandler);
+        this.physics.add.collider(player, cat, this.onCollision, null, this);
     }  
+
+    onCollision() {
+        console.log("collided with objects");
+        this.scene.start("WinScene");
+    }
 
     update() {
         if (cursors.left.isDown) {
@@ -47,8 +58,4 @@ class GameScene extends Phaser.Scene {
             player.setVelocityY(-330);
         }
     }
-}
-
-function catHitHandler() {
-    alert("You hit the cat!");
 }
