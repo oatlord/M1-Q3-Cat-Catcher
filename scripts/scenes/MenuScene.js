@@ -17,6 +17,10 @@ class MenuScene extends Phaser.Scene {
         let creditText = this.add.text(20,40,"Credits").setOrigin(0,0);
         creditText.setInteractive({useHandCursor: true});
         creditText.on("pointerdown", () => this.credits());
+
+        let quitText = this.add.text(20,60,"Quit").setOrigin(0,0);
+        quitText.setInteractive({useHandCursor: true});
+        quitText.on("pointerdown", () => this.quit());
     }
 
     playGame() {
